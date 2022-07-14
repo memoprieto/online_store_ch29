@@ -37,6 +37,19 @@ function Navbar() {
                 About
                 </Link>
               </li>
+              
+              <li className="nav-item">
+                <Link className="nav-link" to="/admin">
+                Admin
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" to="/todo">
+                 Shopping List
+                </Link>
+              </li>
+
             </ul>
             <form className="d-flex" role="search">
               <Link className="btn btn-outline-success" to="/cart">
