@@ -18,10 +18,10 @@ function App() {
         <Navbar></Navbar>
 
         <Routes>
-          <Route patch="/" element={<Home/>} />
-          <Route patch="/catalog" element={<Catalog/>} />
-          <Route patch="/about" element={<About/>} />
-          <Route patch="/cart" element={<Cart/>} />
+          <Route path="/" element={<Home/>} />
+          <Route path="/catalog" element={<Catalog/>} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/cart" element={<Cart/>} />
         </Routes>
 
         {/*footer here*/}

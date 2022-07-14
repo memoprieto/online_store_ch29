@@ -23,12 +23,12 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" href="/">
+                <Link className="nav-link active" aria-current="page" to="/">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" href="/catalog">
+                <Link className="nav-link" to="/catalog">
                   Catalog
                 </Link>
               </li>
@@ -39,9 +39,9 @@ function Navbar() {
               </li>
             </ul>
             <form className="d-flex" role="search">
-              <button className="btn btn-outline-success" to="/">
-                Search
-              </button>
+              <Link className="btn btn-outline-success" to="/cart">
+                View cart
+              </Link>
             </form>
           </div>
         </div>

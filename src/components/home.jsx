@@ -12,12 +12,3 @@ const Home=()=>{
 };
 
 export default Home;
-
-/*
-
-    -create Cart pag
-    -display a simple h1 for now
-    -use the search button to navigate to it (text should be: View cart)
-    -remove the search box from the navBar
-
-*/
