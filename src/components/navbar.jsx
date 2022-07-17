@@ -1,8 +1,11 @@
-
 import "./navbar.css";
 import { Link } from 'react-router-dom';
+import {useContext} from 'react';
+import StoreContext from '../context/storeContext';
 
 function Navbar() {
+  let cart=useContext(StoreContext).cart;
+
     return ( 
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
@@ -40,19 +43,14 @@ function Navbar() {
               
               <li className="nav-item">
                 <Link className="nav-link" to="/admin">
-                Admin
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className="nav-link" to="/todo">
-                 Shopping List
+                 Admin Page
                 </Link>
               </li>
 
             </ul>
             <form className="d-flex" role="search">
               <Link className="btn btn-outline-success" to="/cart">
+                <span className='badge bg-primary'>{cart.length}</span>
                 View cart
               </Link>
             </form>

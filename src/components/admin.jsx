@@ -4,10 +4,12 @@ import { useState } from "react";
 const Admin = () => {
   const [coupon, setCoupon] = useState({});
   const [product, setProduct] = useState({});
+  const [allCoupons, setAllCoupons] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
 
-  const handleCouponChanged = (e) => {
+  const handleCouponChange = (e) => {
     let name = e.target.name;
-    let value = e.target.value;
+    let value = e.target.value; 
 
     let copy = { ...coupon };
     copy[name] = value;
@@ -15,11 +17,17 @@ const Admin = () => {
   };
 
   const saveCoupon = () => {
-    let copy = { ...coupon };
-    let discount = parseFloat(copy.discount);
-    copy.discount = discount;
+    let coupon2beSaved = { ...coupon };
+    let discount = parseFloat(coupon2beSaved.discount);
+    coupon2beSaved.discount = discount;
 
-    console.log(copy);
+    console.log(coupon2beSaved);
+    // todo: send obj to the server
+
+    // add it to the state array
+    let copyCoupons = [...allCoupons];    
+    copyCoupons.push(coupon2beSaved);
+    setAllCoupons(copyCoupons);
   };
 
   const handleProductChanged = (e) => {
@@ -35,12 +43,23 @@ const Admin = () => {
     let copy={ ...product };
     copy.price=parseFloat(copy.price);
     console.log(copy);
+
+    // todo: save prod on server
+
+    // save prod on state array
+    let copyAllProds=[...allProducts];
+    copyAllProds.push(copy);
+    setAllProducts(copyAllProds);
   };
 
   /**
+   * git init
+   * git remot add origin URL
+   * 
    * git add .
    * git commit -m ""
    * git push
+   * git push -u original master
    * 
    */
 
@@ -92,6 +111,12 @@ const Admin = () => {
               </button>
             </div>
           </div>
+            
+          <div className="produts-list">
+            <ul>
+              {allProducts.map((prod, index) => <li key={index}>{prod.title}-${prod.price}</li>)}
+            </ul>
+          </div>
         </section>
 
         <section className="coupons">
@@ -100,16 +125,12 @@ const Admin = () => {
           <div className="form">
             <div className="my-form">
               <label>Code</label>
-              <input name="code" onChange={handleCouponChanged} type="text" />
+              <input name="code" onChange={handleCouponChange} type="text" />
             </div>
 
             <div className="my-control">
               <label>Discount</label>
-              <input
-                name="discount"
-                onChange={handleCouponChanged}
-                type="number"
-              />
+              <input name="discount" onChange={handleCouponChange} type="number" />
             </div>
 
             <div className="my-control">
@@ -118,6 +139,13 @@ const Admin = () => {
               </button>
             </div>
           </div>
+
+          <div className="coupons-list">
+            <ul>
+              {allCoupons.map((coupon, index) => <li key={index}>{coupon.code} - {coupon.discount}% off</li> )}
+            </ul>
+          </div>
+
         </section>
       </div>
     </div>
@@ -125,3 +153,9 @@ const Admin = () => {
 };
 
 export default Admin;
+
+// <ul>
+// {allCoupons.map(coupon => <li>{coupon.code} - {coupon.discount}% off</li> )}
+// </ul>
+
+// {/* Display here your coupons like] */}
