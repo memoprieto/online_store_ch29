@@ -6,6 +6,16 @@ import StoreContext from '../context/storeContext';
 function Navbar() {
   let cart=useContext(StoreContext).cart;
 
+  const getCount=()=> {
+    let count=0;
+    // travel the array sum the quantity of each product into count
+    for (let i=0; i< cart.length; i++) {
+      count += cart[i].quantity;
+    }
+
+    return count;
+  }
+
     return ( 
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
@@ -50,7 +60,7 @@ function Navbar() {
             </ul>
             <form className="d-flex" role="search">
               <Link className="btn btn-outline-success" to="/cart">
-                <span className='badge bg-primary'>{cart.length}</span>
+                <span className='badge bg-primary'>{getCount()}</span>
                 View cart
               </Link>
             </form>

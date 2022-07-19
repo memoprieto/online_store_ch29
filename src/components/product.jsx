@@ -19,8 +19,9 @@ const Product = (props) => {
     };
 
     const handleAdd = () => {
-        console.log('add button pressed');
-        globalAddProd(props.data); // call the global fn 
+        let prod4Cart = {...props.data, quantity };
+        
+        globalAddProd(prod4Cart); // call the global fn 
     };
 
 
@@ -31,7 +32,9 @@ const Product = (props) => {
             <label>Price: ${props.data.price.toFixed(2)}</label>
             <label>Total: ${getTotal()}</label>
             <QuantityPicker onChange={quantityChange}></QuantityPicker>
-            <button onClick={handleAdd} className="btn btn-primary btn-sm">Add</button>
+            <button onClick={handleAdd} className="btn btn-primary btn-sm">
+              Add
+            </button>
         </div>
     );
 };
